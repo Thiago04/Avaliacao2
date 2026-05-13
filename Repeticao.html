@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Login</title>
+</head>
+<h1>Login</h1>
+<input id="username" type="text" placeholder="Usuário">
+<input id="password" type="password" placeholder="Senha">
+<button onclick="login()">Login</button>
+<div id="mensagem"></div>
+<div id="tentativas"></div>
+
+<script>
+    var contador = 0;
+    var MAX_TENTATIVAS = 3;
+
+    function login() {
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+        var divMensagem = document.getElementById("mensagem");
+        var divTentativas = document.getElementById("tentativas");
+
+        if (username === "" || password === "") {
+            divMensagem.innerText = "Preencha todos os campos.";
+            return;
+        }
+
+        if (username === "admin" && password === "1234") {
+            divMensagem.innerText = "Login bem-sucedido!";
+            divTentativas.innerText = "";
+            contador = 0;
+            return;
+        }
+
+
+        contador++;
+        var historico = "";
+        for (var i = 1; i <= contador; i++) {
+            historico += "Tentativa " + i + " — falhou\n";
+        }
+
+        divTentativas.innerText = historico;
+
+        if (contador >= MAX_TENTATIVAS) {
+            divMensagem.innerText = "Você errou 3 vezes. Acesso bloqueado.";
+            document.getElementById("username").disabled = true;
+            document.getElementById("password").disabled = true;
+            document.querySelector("button").disabled = true;
+        } else {
+            divMensagem.innerText = "Usuário ou senha inválidos. Tentativas restantes: " + (MAX_TENTATIVAS - contador);
+        }
+    }
+</script>
+
+</body>
+
+</html>
