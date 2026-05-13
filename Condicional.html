@@ -7,8 +7,8 @@
 
 <body>
     <h1>Bonus Funcionario</h1>
-    <input type="number" id="tarefa" placeholder="Digite a quantidade de tarefas realizadas">
-    <button onclick="calcularBonus()">Calcular Bonus</button>
+    <input type="number" id="tarefa" placeholder="Quantidade de tarefas">
+    <button onclick="calcularBonus()">Calcular Bônus</button>
     <div id="bonus"></div>
     <script>
         function calcularBonus() {
@@ -17,7 +17,7 @@
             if (tarefa > 5 && tarefa <= 10) {
                 bonus = "Você ganhou um bônus de 100 reais!";
             } else if (tarefa > 10) {
-                bonus = "Você ganhou um bonus de  " + (1200 * 0.30) + " reais! Que significa 30% do seu salario.";
+                bonus = "Você ganhou um bônus de  " + (1200 * 0.30) + " reais! Que significa 30% do seu salario.";
             } else {
                 bonus = "Você não atingiu a meta para ganhar bônus.";
             }
